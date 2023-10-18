@@ -1,12 +1,16 @@
-name: py
+name: Compile for Linux
+
 on:
   push
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: run linux.py # run the run.py to get the latest data
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: execute script # run file
         run: |
           python linux.py
